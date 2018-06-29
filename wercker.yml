@@ -23,6 +23,7 @@ build:
     - script:
         name: go build
         code: |
+          echo "env..."
           env
 
     # Test the project
