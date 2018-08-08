@@ -19,5 +19,5 @@ workflows:
       - build:
           filters:
             tags:
-              only: /^1.*/
+              only: /^2.*/
 
