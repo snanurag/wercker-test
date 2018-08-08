@@ -6,9 +6,6 @@ jobs:
     steps:
       - checkout
       - run: echo "A first hello"
-    filters:
-      tags:
-        only: /^2.0/
 workflows:
   version: 2
   un-tagged-build:
