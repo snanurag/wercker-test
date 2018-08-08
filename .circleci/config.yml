@@ -8,7 +8,7 @@ jobs:
       - run: echo "A first hello"
     filters:
       tags:
-        only: /^2.*/
+        only: /^2.0/
 workflows:
   version: 2
   un-tagged-build:
@@ -22,5 +22,5 @@ workflows:
       - build:
           filters:
             tags:
-              only: /^2.*/
+              only: /^2.0/
 
