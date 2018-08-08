@@ -13,7 +13,7 @@ workflows:
       - build:
           filters:
             tags:
-              ignore: /^v.*/
+              ignore: v.0
   tagged-build:
     jobs:
       - build:
