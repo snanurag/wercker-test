@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     filters:
-	    tags:
-	      only: /^1.0*/
+      tags:
+        only: /^1.0*/
     docker:
       - image: circleci/ruby:2.4.1-jessie
     steps:
