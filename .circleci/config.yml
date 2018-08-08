@@ -19,5 +19,5 @@ workflows:
       - build:
           filters:
             tags:
-              only: /^2.0/
+              only: 2.0
 
