@@ -12,3 +12,11 @@ jobs:
     steps:
       - checkout
       - run: echo "Hello from test"
+workflows:
+  version: 2
+  tagged-build:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: 3.0
