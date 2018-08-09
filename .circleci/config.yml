@@ -6,6 +6,12 @@ jobs:
     steps:
       - checkout
       - run: echo "hello from build"
+  test:
+    docker:
+      - image: circleci/ruby:2.4.1-jessie
+    steps:
+      - checkout
+      - run: echo "hello from build"
 workflows:
   version: 2
   un-tagged-build:
@@ -20,3 +26,12 @@ workflows:
           filters:
             tags:
               only: /^2.0/
+  tagged-seq-build:
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^1.0/
