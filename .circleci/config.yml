@@ -20,12 +20,3 @@ workflows:
           filters:
             tags:
               only: 2.0
-  tagged-seq-buid:
-    jobs:
-      - build
-      - test
-          requires:
-            - build
-          filters:
-            tags:
-              only: 1.0
