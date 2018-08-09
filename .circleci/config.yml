@@ -20,3 +20,6 @@ workflows:
   tagged-build:
     jobs:
       - test
+        filters:
+          tags:
+            only: 3.0
