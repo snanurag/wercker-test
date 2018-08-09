@@ -5,19 +5,27 @@ jobs:
       - image: circleci/ruby:2.4.1-jessie
     steps:
       - checkout
-      - run: echo "A first hello"
+      - run: echo "Hello from build"
+  test:
+    docker:
+      - image: circleci/ruby:2.4.1-jessie
+    steps:
+      - checkout
+      - run: echo "Hello from test"
 workflows:
   version: 2
-  un-tagged-build:
-    jobs:
-      - build:
-          filters:
-            tags:
-              ignore: v.0
   tagged-build:
     jobs:
       - build:
           filters:
             tags:
               only: 2.0
-
+  tagged-seq-buid:
+    jobs:
+      - build
+      - test
+          requires:
+            - build
+          filters:
+            tags:
+              only: 1.0
