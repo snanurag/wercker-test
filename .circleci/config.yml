@@ -6,32 +6,37 @@ jobs:
     steps:
       - checkout
       - run: echo "hello from build"
+  deploy:
+    docker:
+      - image: circleci/ruby:2.4.1-jessie
+    steps:
+      - checkout
+      - run: echo "hello from deploy"
   test:
     docker:
       - image: circleci/ruby:2.4.1-jessie
     steps:
       - checkout
-      - run: echo "hello from build"
+      - run: echo "hello from test"
 workflows:
   version: 2
-  un-tagged-build:
+  build-test-deploy:
     jobs:
       - build:
-          filters:
+          filters:  # required since `test` has tag filters AND requires `build`
             tags:
-              ignore: /^v.0/
-  tagged-build:
-    jobs:
-      - build:
-          filters:
+              only: /^.*/
+      - test:
+          requires:
+            - build
+          filters:  # required since `deploy` has tag filters AND requires `test`
             tags:
-              only: /^2.0/
-  tagged-seq-build:
-    jobs:
-      - test
-      - build:
+              only: /^v.*/
+      - deploy:
           requires:
             - test
           filters:
             tags:
-              only: /^1.0/
+              only: /^v.*/
+            branches:
+              ignore: /.*/
