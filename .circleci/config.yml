@@ -19,7 +19,7 @@ workflows:
       - build
   tagged-build:
     jobs:
-      - test
+      - test:
         filters:
           tags:
             only: 3.0
