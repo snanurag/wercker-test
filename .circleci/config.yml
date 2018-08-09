@@ -16,7 +16,10 @@ workflows:
   version: 2
   untagged-build:
     jobs:
-      - build
+      - build:
+        filters:
+          tags:
+            ignore: 3.0
   tagged-build:
     jobs:
       - test:
