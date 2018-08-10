@@ -36,6 +36,7 @@ or at `http://localhost:5000/cities.json` to see:
 ```
 
 The second, and more useful, way is to use the `wercker dev` command to launch the binary within a Docker container, using the base image defined in the `box/id` property at the top of the `wercker.yml`, like so:
+
 ```
 wercker dev --expose-ports
 ```
