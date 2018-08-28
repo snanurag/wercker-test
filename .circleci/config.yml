@@ -26,17 +26,17 @@ workflows:
           filters:  # required since `test` has tag filters AND requires `build`
             tags:
               only: /^.*/
-      - test:
-          requires:
-            - build
-          filters:  # required since `deploy` has tag filters AND requires `test`
-            tags:
-              only: /^v.*/
-      - deploy:
-          requires:
-            - test
-          filters:
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
+      # - test:
+      #     requires:
+      #       - build
+      #     filters:  # required since `deploy` has tag filters AND requires `test`
+      #       tags:
+      #         only: /^v.*/
+      # - deploy:
+      #     requires:
+      #       - test
+      #     filters:
+      #       tags:
+      #         only: /^v.*/
+      #       branches:
+      #         ignore: /.*/
